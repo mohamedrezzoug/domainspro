@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Domain Intelligence Pro — تحليل استثماري شامل للدومينات</title>
+<meta name="description" content="تحليل استثماري وقانوني ولغوي شامل لأسماء النطاقات قبل الشراء">
+<meta name="theme-color" content="#0B1220">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%230B1220%22 stroke=%22%23C9A44C%22 stroke-width=%224%22/><text x=%2250%22 y=%2262%22 font-size=%2244%22 text-anchor=%22middle%22 fill=%22%23C9A44C%22 font-family=%22monospace%22>DI</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark">DI</div>
+      <div>
+        <div class="eyebrow">Domain Intelligence · Case File System</div>
+        <h1>ذكاء النطاقات الاستثماري</h1>
+      </div>
+    </div>
+    <p class="tagline">10 أقسام تحليل قبل ما تشري أي دومين — بيانات حقيقية + تقدير AI مصنّف بوضوح</p>
+  </div>
+  <div class="search-row">
+    <input type="text" id="domainInput" placeholder="example.com" autocomplete="off" spellcheck="false">
+    <button class="btn btn-primary" id="fullScanBtn">🔎 تحليل شامل (كل الأقسام)</button>
+    <button class="btn btn-ghost" id="resetBtn">تصفير</button>
+    <button class="btn btn-ghost" id="settingsBtn">⚙️ مفتاح API</button>
+  </div>
+
+  <div id="settingsPanel" class="settings-panel" style="display:none">
+    <div class="settings-inner">
+      <label for="apiKeyInput">Anthropic API Key (sk-ant-...)</label>
+      <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." autocomplete="off" spellcheck="false">
+      <div style="display:flex; gap:8px; margin-top:10px;">
+        <button class="btn btn-primary btn-sm" id="saveKeyBtn">حفظ</button>
+        <button class="btn btn-ghost btn-sm" id="clearKeyBtn">مسح</button>
+      </div>
+      <p class="settings-note">
+        المفتاح كيتخزن غير فـ localStorage ديال المتصفح ديالك (بلا ما يتبعث لأي مكان آخر غير api.anthropic.com مباشرة).
+        دير مفتاح جديد من <a href="https://console.anthropic.com/settings/keys" target="_blank" style="color:var(--teal)">console.anthropic.com</a> — خاصك تزيد وسيلة دفع باش يخدم.
+        ⚠️ إلا رفعتي هاد الملفات لـ repo عمومي بمفتاح مكتوب مباشرة فالكود، أي حد يقدر يسرقو. الأفضل تدخلو هنا فكل مرة ولا فمتصفح واحد فقط.
+      </p>
+    </div>
+  </div>
+</header>
+
+<div class="legend">
+  <span><span class="badge badge-real" style="padding:2px 8px;">REAL</span> بيانات حقيقية موثقة (RDAP / DNS)</span>
+  <span><span class="badge badge-ai" style="padding:2px 8px;">AI</span> تقدير مبني على استدلال AI وبحث ويب</span>
+  <span><span class="badge badge-hybrid" style="padding:2px 8px;">HYBRID</span> مزيج بيانات حقيقية + تقدير</span>
+</div>
+
+<div class="layout">
+  <nav class="case-index" id="caseIndex">
+    <div class="case-index-label">ملف القضية</div>
+    <!-- tabs injected by JS -->
+  </nav>
+
+  <main id="panels">
+    <!-- panels injected by JS -->
+  </main>
+</div>
+
+<p class="footer-note">
+  Domain Intelligence Pro — أداة مساعدة اتخاذ قرار وليست استشارة قانونية أو مالية رسمية. الفحص القانوني والعلامات التجارية استرشادي فقط ولا يغني عن بحث رسمي عبر USPTO / WIPO / محامي متخصص.
+</p>
+
+<script src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    });
+  }
+</script>
+
+</body>
+</html>
